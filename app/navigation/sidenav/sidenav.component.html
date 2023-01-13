@@ -1,0 +1,96 @@
+
+
+<div class="sidebar" [class.sidebar-close]="!openSidebar">
+  <div class="logo-details">
+    <div class="logo">
+    </div>
+  </div>
+  <ul class="nav-links ps-2" id="nav-links" id="menu">
+    <li *ngFor="let item of menuSidebar" #itemEl routerLinkActive="active">
+      <div *ngIf="item.sub_menu.length == 0" class="dropdown-title">
+        <a [routerLink]="[item.link]">
+          <i [class]="item.icon"></i>
+          <span class="link_name">{{ item.link_name }}</span>
+        </a>
+      </div>
+      <div
+        *ngIf="item.sub_menu.length > 0"
+        class="dropdown-title"
+        (click)="showSubmenu(itemEl)"
+      >
+        <a>
+          <i [class]="item.icon"></i>
+          <span class="link_name">{{ item.link_name }}</span>
+        </a>
+        <i class="bi bi-chevron-down arrow"></i>
+      </div>
+      <ul class="sub-menu" [class.blank]="item.sub_menu.length == 0" >
+        <li>
+          <a class="link_name">{{ item.link_name }}</a>
+        </li>
+        <li *ngFor="let item_sub of item.sub_menu" routerLinkActive="active">
+          <a [routerLink]="[item_sub.link]">{{ item_sub.link_name }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<section class="home-section">
+  <div class="home-header">
+    <div class="hamburger-menu">
+      <input
+        type="checkbox"
+        id="checkbox-hamburger-menu"
+        [(ngModel)]="openSidebar"
+      />
+      <label class="label-hamburger-menu" for="checkbox-hamburger-menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </label>
+    </div>
+    <div class="title">Header</div>
+  </div>
+  <div class="home-view">
+    <router-outlet></router-outlet>
+  </div>
+</section>
+
+
+
+
+<!-- <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+      
+      <div class="w-100">
+        <app-topnav></app-topnav>
+      </div>
+      
+    <mat-sidenav-container class="example-sidenav-container" 
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="true" 
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list style="min-width: 230px;">
+          <a mat-list-item routerLink="/nav/barchart" routerLinkActive="active" >BarChart</a>
+          <a mat-list-item routerLink="/nav/piechart" routerLinkActive="active">PieChart</a>
+          <a mat-list-item routerLink="." >Google-Map</a>
+          <a mat-list-item routerLink="/nav/table" routerLinkActive="active">Table</a>
+          <a mat-list-item routerLink="/nav/export_table" routerLinkActive="active">Export-Table</a>
+          <a mat-list-item routerLink="/nav/import_table" routerLinkActive="active">Import-Table</a>
+          <a mat-list-item routerLink="/nav/import_mattable" routerLinkActive="active">Import-MatTable</a>
+          <a mat-list-item routerLink="/nav/image" routerLinkActive="active">Image Upload</a>
+          <a mat-list-item routerLink="/nav/dropdown" routerLinkActive="active">Dropdown</a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content class="sidebar_content" >
+         <a (click)="snav.toggle()">
+          <img src="assets/images/close_open.png" alt="img" width="25px">
+         </a>
+         <div>
+            <router-outlet></router-outlet>
+         </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+   -->

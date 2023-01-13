@@ -1,0 +1,21 @@
+<div class="ms-3">
+
+    <p>pdf-reader works!</p>
+
+    <label for="">Upload Pdf-file :
+        <input type="file" (change)="pdfOnload($event)" id='pdf-upload' accept=".pdf" multiple="false" />
+        <div *ngIf="pdfSrc">
+            <button ion-button (click)="incrementZoom()">zoom-in</button>
+            <button ion-button (click)="decrementZoom()">zoom-out</button>
+        </div>
+    </label>
+
+    <pdf-viewer [src]="pdfSrc" [render-text]="true" [original-size]="false" [autoresize]="true" class="mt-2" 
+    [zoom]="zoom" style="width: 1000px; height: 500px"></pdf-viewer>
+
+</div>
+<!-- <button (click)="onExport()">Export PDF</button> -->
+
+
+<!-- <pdf-viewer [fit-to-page]="fitToPage" [(page)]="pageVariable" [zoom]="zoom" [autoresize]="autoresize"
+    [show-all]="showAll" [src]="pdfSrc" [render-text]="true" style="display: block"></pdf-viewer> -->

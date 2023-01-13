@@ -1,0 +1,56 @@
+<div class="ms-3">
+    <div class="mt-3">
+        <input type="search" class="" placeholder="Search" (keyup)="applyFilter($event)">
+    </div>
+
+    <div class="mat-elevation-z8 mt-3 me-3 mb-3" id="ExampleMaterialTable2">
+        <table id="ExampleMaterialTable" mat-table [dataSource]="dataSource" matSort class="w-100">
+
+            ['position', 'useCaseName', 'description', 'statusName', 'members'];
+
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> Sl No. </th>
+                <td mat-cell *matCellDef="let element; let i = index;">
+                    {{i+1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="useCaseName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Use Case </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.useCaseName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="statusName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.statusName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="members">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Members </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.members}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [pageSize]="setPagination.pageSize" [pageSizeOptions]="setPagination.pageSizeOptions"
+            (page)="onPaginateChange($event)" [length]="setPagination.length" showFirstLastButtons
+            aria-label="Select page of Table Data" class="custom-pagination">
+        </mat-paginator>
+    </div>
+
+    <div class="export-container">
+        <button mat-raised-button color="primary" (click)="exportTable()">Export Table To Excel</button>
+    </div>
+
+</div>
+

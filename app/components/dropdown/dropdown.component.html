@@ -1,0 +1,48 @@
+<div class="ms-3">
+    <p>dropdown works!</p>
+
+    <div>
+        <select [(ngModel)]="selectedValue" (ngModelChange)="onSelectName($event)"
+            style="width: 200px;height: 30px;margin-bottom: 20px;">
+            <option default disabled selected>Pick a team</option>
+            <option *ngFor="let option of collection" [ngValue]="{ id: option.id, name: option.name }">
+                {{option.name}}
+            </option>
+        </select>
+        <h3>user id - {{selectedId}} </h3>
+        <h3>user name - {{selectedName}}</h3>
+    </div>
+</div>
+
+
+
+<!-- <select [(ngModel)]="selectedValue">
+    <option default disabled selected>Pick a team</option>
+    <option *ngFor="let option of collection" [value]="option.id">
+        {{option.name}}
+    </option>
+</select>
+
+<h3>user id - {{selectedValue}}</h3> -->
+
+<!-- <div class="col">
+    <select #teams (change)="onSelected(teams.value)" style="width: 250px;height: 30px;border-radius: 6px;">
+        <option default disabled selected>-- select any one --</option>
+        <option value="1">team-one</option>
+        <option  value="2">team-two</option>
+        <option>team-three</option>
+    </select>
+
+    <h3>You selected = {{ selectedTeam }}</h3>
+</div> -->
+
+<!-- <div>
+    <select [(ngModel)]="selectedTeam">
+        <option default>Pick a team</option>
+        <option>Lakers</option>
+        <option>Miami</option>
+        <option>Cleveland</option>
+    </select>
+
+    <h3>You selected = {{ selectedTeam }}</h3>
+</div> -->

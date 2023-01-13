@@ -1,0 +1,78 @@
+<form [formGroup]="registerForm">
+    <label >CompanyName : 
+        <input type="text" formControlName="companyName" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['companyName'].errors }">
+        <div  *ngIf="f['companyName'].errors" class="invalid-feedback">
+            <div *ngIf="isSubmit && f['companyName'].errors['required']">CompanyName is required</div>
+        </div>
+    </label><br><br>
+    <label >FirstName : 
+        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['firstName'].errors }">
+        <div  *ngIf="f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="isSubmit && f['firstName'].errors['required']">FirstName is required</div>
+        </div>
+    </label><br><br>
+    <label >LastName :
+        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['lastName'].errors }">
+        <div  *ngIf="f['lastName'].errors" class="invalid-feedback">
+            <div *ngIf="isSubmit && f['lastName'].errors['required']">LastName is required</div>
+        </div>
+    </label><br><br>
+    <label >Username : 
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['username'].errors }">
+        <div  *ngIf="f['username'].errors" class="invalid-feedback">
+            <div *ngIf="isSubmit && f['username'].errors['required']">UserName is required</div>
+            <div *ngIf="isSubmit && f['username'].errors['minlength']">UserName Min 5 Character required</div>
+        </div>
+    </label><br><br>
+    <label >Password :  
+        <input type="text" formControlName="password" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['password'].errors}">
+        <div *ngIf="f['password'].errors" class="invalid-feedback"> 
+            <div *ngIf="isSubmit && f['password'].errors['required']">Password is required</div>
+            <div *ngIf="isSubmit && f['password'].errors['minlength']">Password Min 8 Character required</div>
+        </div>
+    </label><br><br>
+
+    <div>
+        <label>Confirm Password :
+        <input type="password" formControlName="confirmPassword" class="form-control"
+            [ngClass]="{ 'is-invalid': isSubmit && f['confirmPassword'].errors }" />
+        
+        <div *ngIf="isSubmit && f['confirmPassword'].errors" class="invalid-feedback">
+            <div *ngIf="f['confirmPassword'].errors['required']">
+                Confirm Password is required
+            </div>
+            <div *ngIf="f['confirmPassword'].errors['matching']">
+                Confirm Password does not match
+            </div>
+        </div>
+    </label><br><br>
+    </div>
+
+    <label >Phone :  
+        <input type="number" formControlName="phone" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['phone'].errors}">
+        <div *ngIf="f['phone'].errors" class="invalid-feedback"> 
+            <div *ngIf="isSubmit && f['phone'].errors['required']">Phone is required</div>
+            <div *ngIf="isSubmit && f['phone'].errors['pattern']">Phone Number is 10 Charesters required</div>
+        </div>
+    </label><br><br>
+
+    <label >E-mail :  
+        <input type="text" formControlName="email" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['email'].errors}">
+        <div *ngIf="f['email'].errors" class="invalid-feedback"> 
+            <div *ngIf="isSubmit && f['email'].errors['required']">E-mail is required</div>
+            <div *ngIf="isSubmit && f['email'].errors['pattern']">E-mail is not Valid</div>
+        </div>
+    </label><br><br>
+
+    <div>
+        <input type="checkbox" formControlName="acceptTerms" class="form-check-input"
+            [ngClass]="{ 'is-invalid': isSubmit && f['acceptTerms'].errors }" />
+        <label for="acceptTerms" class="form-check-label">I have read and agree to the Terms
+        <div *ngIf="isSubmit && f['acceptTerms'].errors" class="invalid-feedback">
+            Accept Terms is required
+        </div>
+    </label>
+    </div>
+
+    <button (click)="onSubmit()" class="btn btn-danger d-block m-3">Click</button>
+</form> 

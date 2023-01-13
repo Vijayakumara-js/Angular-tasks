@@ -1,0 +1,9 @@
+<div class="ms-3">
+    <p class="">upload-image works!</p>
+    <div style="border: 1px solid rgb(175, 175, 175); width: 205px; height: 250px;">
+        <input #file type="file" accept='image/*' [hidden]="true" (change)="getImage(file.files)" />
+        <img [src]="imageURL" *ngIf="imageURL" download width="92%" height="70%" class="m-2"><br>
+        <button class=" btn btn-secondary ms-5 " (click)="file.click()">ChooseFile</button>
+    </div><br>
+    <h3>File name : {{fileToUpload?.name}}</h3>
+</div>

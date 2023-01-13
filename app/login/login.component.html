@@ -1,0 +1,18 @@
+
+
+
+<form [formGroup]="form" class="ms-5">
+    <label >UserName : 
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['username'].errors }">
+        <div  *ngIf="f['username'].errors" class="invalid-feedback">
+            <div *ngIf="isSubmit && f['username'].errors['required']">UserName is Required</div>
+        </div>
+    </label><br><br>
+    <label >Password :  
+        <input type="text" formControlName="password" class="form-control" [ngClass]="{'is-invalid': isSubmit && f['password'].errors}">
+        <div *ngIf="f['password'].errors" class="invalid-feedback"> 
+            <div *ngIf="isSubmit && f['password'].errors['required']">Password is required</div>
+        </div>
+    </label><br><br>
+    <button (click)="onSubmit()" class="btn btn-danger d-block m-3">Click</button>
+</form> 
